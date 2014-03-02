@@ -4,7 +4,7 @@
    * @param {Array} items
    * @returns {Array}
    */
-  exports.sort = function (items) {
+  exports.insertionSort = function (items) {
     var j, i, key;
     for (i = 0; i < items.length; i++) {
       key = items[i];
@@ -18,4 +18,32 @@
     return items;
   };
 
-})(typeof exports === 'undefined' ? this['insertionSort'] = {} : exports);
+  exports.binaryInsertionSort = function(items){
+    var middle, j, i, key, left, right;
+
+    for (i = 1; i < items.length; ++i) {
+      key = items[i];
+
+      left = 0, right = i;
+
+      while(left<right){
+        middle = Math.floor((left+right)/2);
+        if(items[middle]<key){
+          left = middle+ 1
+        } else {
+          right = middle;
+        }
+      }
+
+      for (j = i; j > left; --j) {
+        // swap
+        var temp = items[j-1];
+        items[j-1] = items[j];
+        items[j] = temp;
+
+      }
+    }
+    return items;
+  }
+
+})(typeof exports === 'undefined' ? this['sort'] = {} : exports);
