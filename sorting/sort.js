@@ -12,6 +12,7 @@
       for (j = i-1; 0 <= j && items[j]> key; j--) {
         // swap
         items[j+1]= items[j];
+
       }
       items[j+1] = key;
     }
@@ -22,12 +23,11 @@
     var temp, middle, j, i, key, left, right;
 
     for (i = 1; i < items.length; ++i) {
-      key = items[i];
+      key = items[i],
       left = 0, right = i;
 
       while(left<right){
         middle = Math.floor((left+right)/2);
-
         if(items[middle]<key){
           left = middle + 1
         } else {
@@ -35,12 +35,12 @@
         }
       }
 
+      temp = items[i];
       for (j = i; j > left; --j) {
         // swap
-        temp = items[j-1];
-        items[j-1] = items[j];
-        items[j] = temp;
+        items[j] = items[j-1];
       }
+      items[left] = temp;
     }
     return items;
   }

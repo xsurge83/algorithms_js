@@ -1,6 +1,7 @@
 var expect = require('expect.js'),
   sort = require('../sorting/sort'),
   Timer = require('../util/timer');
+  _ = require('underscore');
 
 var generateArray = function (len, range) {
     if (typeof range === 'undefined') {
@@ -8,11 +9,11 @@ var generateArray = function (len, range) {
     }
     var array = new Array();
     for (var index = 0; index < len; index++) {
-      array.push(Math.floor(Math.random() * 10) + 1);
+      array.push(Math.floor(Math.random() * range) + 1);
     }
     return array;
   },
-  NUM_ITEMS = generateArray(100000, 100);
+  TEST_ITEMS = generateArray(1000, 100);
 
 
 describe('sort', function(){
@@ -36,13 +37,15 @@ describe('sort', function(){
       expect(sort.insertionSort(items)).to.eql([ ]);
     });
 
-    it('should test performance', function (done) {
-      sort.insertionSort(NUM_ITEMS);
+    it('should test performance', function () {
 
+      sort.insertionSort(_.clone(TEST_ITEMS));
+
+      var items = _.clone(TEST_ITEMS);
       var timer = new Timer().start();
-      sort.insertionSort(NUM_ITEMS);
+      sort.insertionSort(items);
       timer.end('insertion sort took: ');
-      done();
+
     });
   });
 
@@ -63,12 +66,12 @@ describe('sort', function(){
       expect(sort.binaryInsertionSort(items)).to.eql([ ]);
     });
 
-    it('should test performance', function (done) {
-      sort.binaryInsertionSort(NUM_ITEMS);
+    it('should test performance', function () {
+      sort.binaryInsertionSort(_.clone(TEST_ITEMS));
+      var items = _.clone(TEST_ITEMS);
       var timer = new Timer().start();
-      sort.binaryInsertionSort(NUM_ITEMS);
+      sort.binaryInsertionSort(items);
       timer.end('binary insertion sort took: ');
-      done();
     });
   });
 });

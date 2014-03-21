@@ -8,16 +8,18 @@
   },
   "dependencies": {
     "jasmine-node": "~1.13.1",
-    "microtime": "~0.5.1"
+    "microtime": "~0.5.1",
+    "underscore": "~1.6.0"
   },
   "devDependencies": {
     "jasmine-node": "~1.13.1",
     "mocha": "~1.17.1",
     "expect": "0.0.2",
-    "expect.js": "~0.3.1"
+    "expect.js": "~0.3.1",
+    "underscore": "~1.6.0"
   },
   "scripts": {
-    "test": "jasmine-node test"
+    "test": "jasmine-node test --growl"
   },
   "repository": {
     "type": "git",
