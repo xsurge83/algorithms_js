@@ -1,7 +1,7 @@
 var _ = require('underscore'),
   dataGenerator = require('./../helpers/dataGenerator'),
   sorts = require('../../lib').sorts,
-TEST_ITEMS = dataGenerator.generateArray(10000, 100),
+TEST_ITEMS = dataGenerator.generateArray(100000, 100),
   benchmark = require('../helpers/benchmarkDriver').benchmark,
   setupBenchmarks = require('../helpers/benchmarkDriver').setupBenchmarks,
   reportBenchmarks = require('../helpers/benchmarkDriver').reportBenchmarks;
@@ -24,7 +24,15 @@ describe('benchmarks', function () {
       cb();
     });
     benchmark('should sort with merge sort', 0, function (cb) {
-      sorts.merge.sort(itemsToSort);
+      sorts.mergeSort.sort(itemsToSort);
+      cb();
+    });
+    benchmark('should sort with merge sort2', 0, function (cb) {
+      sorts.mergeSort2.sort(itemsToSort);
+      cb();
+    });
+    benchmark('should sort with merge sort3', 0, function (cb) {
+      sorts.mergeSort3.sort(itemsToSort);
       cb();
     });
   });
