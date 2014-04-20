@@ -1,5 +1,5 @@
 var expect = require('expect.js'),
-  sorts = require('../../lib').sorts;
+  sorts = require('../../../lib/index').sorts;
 
 describe('sorts', function () {
 
